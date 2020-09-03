@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function WatchRoute() {
     return (
-        <p>Watch Route</p>
+        <>
+            <Header pageName="Watch" />
+            <p>Watch Route</p>
+        </>
     )
 }
 
