@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import {Link} from "react-router-dom";
+import logo from '../svg/logo.svg';
+
+const styles: {[className: string]: CSSProperties} = {
+    logo: {
+        padding: '10vw',
+        width: '80vw',
+    }
+}
 
 function Welcome() {
     return (
         <>
-            <h1>Tenjga</h1>
+            <img
+              src={logo}
+              style={styles.logo}
+              alt="website logo"
+            />
             <div>
                 <Link to="/play/player-create">
                     <button>Play</button>

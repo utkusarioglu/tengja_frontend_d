@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function GameLobbyRoute() {
     return (
-        <p>Game Lobby</p>
+        <>
+            <Header pageName="Lobby" />
+            <p>Game Lobby content</p>
+        </>
     )
 }
 

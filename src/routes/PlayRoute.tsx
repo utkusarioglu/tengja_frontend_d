@@ -26,7 +26,6 @@ function PlayRoute() {
 
     return (
       <div>
-        <Header />
         {(playerProfile) 
           ? <Redirect
               to={{

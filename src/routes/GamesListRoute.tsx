@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function GamesListRoute() {
     return (
-        <p>Game list</p>
+        <>
+            <Header pageName="Games" />
+            <p>Game list</p>
+        </>
     )
 }
 

@@ -1,9 +1,13 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function playerCreateRoute() {
     return (
-        <p>PlayerCreate</p>
-    )
+        <>
+            <Header pageName="Create Player" />
+            <p>more stuff</p>
+        </>
+    );
 }
 
 export default playerCreateRoute;
