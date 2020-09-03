@@ -2,13 +2,13 @@ import React from "react";
 import {
   Switch,
   Route,
-  Link,
+  // Link,
   useRouteMatch,
-  useParams,
+  // useParams,
   Redirect,
 } from "react-router-dom";
 
-import Header from '../components/Header';
+// import Header from '../components/Header';
 
 import PlayerCreateRoute from './PlayerCreateRoute';
 import GamesListRoute from './GamesListRoute';
