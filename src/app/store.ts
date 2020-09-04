@@ -1,12 +1,15 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import reduxWebsocket from '@giantmachines/redux-websocket';
 import playerReducer from '../features/player/playerSlice';
+import gameListReducer from '../features/gameList/gameListSlice';
+import appReducer from '../features/app/appSlice';
 // import counterReducer from '../features/counter/counterSlice';
 
 export const store = configureStore({
   reducer: {
     player: playerReducer,
-    // counter: counterReducer,
+    app: appReducer,
+    gameList: gameListReducer,
   },
   middleware: [
     reduxWebsocket(),
