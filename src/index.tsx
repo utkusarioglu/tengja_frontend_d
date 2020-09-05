@@ -4,7 +4,7 @@ import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import { connect, send } from '@giantmachines/redux-websocket';
+import { connect } from '@giantmachines/redux-websocket';
 // import { setIsConnected } from './features/app/appSlice';
 
 
