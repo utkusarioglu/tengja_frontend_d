@@ -20,11 +20,11 @@ ReactDOM.render(
 
 const WEBSOCKET_URL = `ws://${window.location.hostname}:4000/ws`
 store.dispatch(connect(WEBSOCKET_URL));
-setTimeout(() => {
-  console.log(`now sending websocket message to ${WEBSOCKET_URL}`)
-  store.dispatch(send("yellow hellow"));
-  // store.dispatch(setIsConnected(true));
-}, 2000)
+// setTimeout(() => {
+//   console.log(`now sending websocket message to ${WEBSOCKET_URL}`)
+//   store.dispatch(send("yellow hellow"));
+//   // store.dispatch(setIsConnected(true));
+// }, 1000)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
