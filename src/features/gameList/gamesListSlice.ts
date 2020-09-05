@@ -1,15 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IGamesList } from './gamesList.types';
+import { RootState } from '../../app/store';
 
-export interface GameList {
-    gamesList: GameListing[]
-}
 
-export interface GameListing {
-    name: string;
-}
-
-const initialState: GameList = {
-    gamesList: [],
+const initialState: IGamesList = {
+    items: [],
 }
 
 const gameListSlice = createSlice({
@@ -20,12 +15,13 @@ const gameListSlice = createSlice({
         'REDUX_WEBSOCKET::MESSAGE': (state, action: PayloadAction<any>) => {
             const message = JSON.parse(action.payload.message);
             if(message.gamesList !== undefined) {
-                state = message.gamesList;
+                state.items = message.gamesList.items;
             }
             return state;
         }
     }
 })
 
+export const selectGamesList = (state: RootState) => state.gameList
 
 export default gameListSlice.reducer;

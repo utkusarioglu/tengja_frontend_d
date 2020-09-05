@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import reduxWebsocket from '@giantmachines/redux-websocket';
 import playerReducer from '../features/player/playerSlice';
-import gameListReducer from '../features/gameList/gameListSlice';
+import gameListReducer from '../features/gameList/gamesListSlice';
 import appReducer from '../features/app/appSlice';
 // import counterReducer from '../features/counter/counterSlice';
 
