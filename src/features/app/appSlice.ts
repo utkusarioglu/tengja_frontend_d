@@ -19,9 +19,15 @@ const appSlice = createSlice({
         // },
     },
     extraReducers: {
-        'REDUX_WEBSOCKET::CONNECT': (state, action: PayloadAction<any>) => {
+        'REDUX_WEBSOCKET::OPEN': (state, action: PayloadAction<any>) => {
             state.isConnected = true;
-            console.log("connect state: \n", state, action);
+            console.log('Websocket OPEN')
+            // console.log("connect state: \n", state, action);
+        },
+        'REDUX_WEBSOCKET::CLOSED': (state, action: PayloadAction<any>) => {
+            state.isConnected = false;
+            console.log('Websocket closed, trying to reconnect')
+            // store.dispatch(connect(WEBSOCKET_URL));
         },
         // 'REDUX_WEBSOCKET::MESSAGE': (state, action: PayloadAction<any>) => {
         //     console.log("app responding to websocket", state, action);

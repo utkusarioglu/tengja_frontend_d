@@ -4,10 +4,7 @@ import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import { connect } from '@giantmachines/redux-websocket';
-// import { setIsConnected } from './features/app/appSlice';
-
-
+import { initiateWebsocketConnection } from './app/websocket';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,13 +15,10 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-const WEBSOCKET_URL = `ws://${window.location.hostname}:4000/ws`
-store.dispatch(connect(WEBSOCKET_URL));
-// setTimeout(() => {
-//   console.log(`now sending websocket message to ${WEBSOCKET_URL}`)
-//   store.dispatch(send("yellow hellow"));
-//   // store.dispatch(setIsConnected(true));
-// }, 1000)
+/**
+ * Initiates the websocket connection for the app
+ */
+initiateWebsocketConnection();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
