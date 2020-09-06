@@ -1,5 +1,5 @@
 import React from 'react';
-import { IGamesList } from '../features/gameList/gamesList.types';
+import { IGamesList } from '../features/gamesList/gamesList.types';
 import GameListing from './GameListing';
 
 type Props = {

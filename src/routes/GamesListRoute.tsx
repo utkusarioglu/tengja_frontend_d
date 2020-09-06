@@ -4,7 +4,7 @@ import { send } from '@giantmachines/redux-websocket';
 
 import Header from '../components/Header';
 import GamesList from '../components/GamesList';
-import { selectGamesList } from '../features/gameList/gamesListSlice';
+import { selectGamesList } from '../features/gamesList/gamesListSlice';
 
 function GamesListRoute() {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IGameListing } from '../features/gameList/gamesList.types';
+import { IGameListing } from '../features/gamesList/gamesList.types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
