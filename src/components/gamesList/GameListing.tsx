@@ -1,5 +1,5 @@
 import React from 'react';
-import { IGameListing } from '../features/gamesList/gamesList.types';
+import { IGameListing } from '../../features/gamesList/gamesList.types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -32,18 +32,16 @@ type Props = {
 function GameListing(props: Props) {
 
     const classes = useStyles();
-
+    const {gameName, playerCount, rules, } = props.gameListing;
     const {
-        gameName,
         rowCount,
         colCount,
         streakLength,
         maxPlayerCount,
-        exactPlayerCount,
         timeLimit,
         winMode,
         tilePop
-    } = props.gameListing;
+    } = rules;
 
     return (
         <Card className={classes.root}>
@@ -61,7 +59,7 @@ function GameListing(props: Props) {
               Streak: {streakLength}
             </Typography>
             <Typography variant="body2" component="p">
-              Players: {exactPlayerCount} of {maxPlayerCount}
+              Players: {playerCount} of {maxPlayerCount}
             </Typography>
             <Typography variant="body2" component="p">
               Time limit: {timeLimit}
