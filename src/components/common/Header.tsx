@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react';
-import logo from '../svg/logo.svg';
+import logo from '../../svg/logo.svg';
 import { Link } from 'react-router-dom';
 import { send } from '@giantmachines/redux-websocket';
 
