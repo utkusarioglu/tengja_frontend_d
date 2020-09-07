@@ -13,12 +13,18 @@ export interface IGameListingCreate extends IGameListingUserFill {
 export interface IGameListingUserFill {
     gameName:string;    
     private: boolean;    
-    rowCount: string;
-    colCount: string;
-    streakLength: string;
-    maxPlayerCount: string;
-    exactPlayerCount: string;
-    timeLimit: string;
-    winMode: string;
-    tilePop: string;
+    playerCount: string;
+    rules: IGameRules;
+}
+
+export type winMode = 'firstStreak' | 'mostStreaks'
+
+export interface IGameRules {
+    timeLimit: number;
+    winMode: winMode;
+    tilePop: boolean;    
+    rowCount: number;
+    colCount: number;
+    streakLength: number;
+    maxPlayerCount: number;
 }
