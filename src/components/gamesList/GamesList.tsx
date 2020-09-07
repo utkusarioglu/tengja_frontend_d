@@ -1,22 +1,28 @@
 import React from 'react';
+import { NavLink, useRouteMatch } from 'react-router-dom';
+
 import { IGamesList } from '../../features/gamesList/gamesList.types';
-import GameListing from './GameListing';
+import GameListItem from './GamesListItem';
 
 type Props = {
     gamesList: IGamesList
 };
 
 function GamesList(props: Props) {
-
-    const listItems = props.gamesList.items.map((gameListing) => 
-        <GameListing 
-            key={gameListing.id}    
-            gameListing={gameListing}/>
+    const match = useRouteMatch();
+    const listItems = props.gamesList.items.map((gameListing) =>
+        <NavLink 
+            to={`${match.path}/${gameListing.gameId}/lobby`}
+            key={gameListing.gameId}    
+            >
+            <GameListItem 
+                gameListing={gameListing}/>
+        </NavLink> 
     )
 
     return (
         <div>
-            <span>f</span>
+            <span>filter</span>
             {listItems}
         </div>
     )

@@ -29,7 +29,7 @@ type Props = {
     gameListing: IGameListing
 };
 
-function GameListing(props: Props) {
+function GameListItem(props: Props) {
 
     const classes = useStyles();
     const {gameName, playerCount, rules, } = props.gameListing;
@@ -76,4 +76,4 @@ function GameListing(props: Props) {
       );
 }
 
-export default GameListing
+export default GameListItem
