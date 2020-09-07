@@ -45,11 +45,11 @@ function PlayRoute() {
           <Route path={`${match.path}/player-create`}>
             <PlayerCreateRoute />
           </Route>
+          <Route path={`${match.path}/games-list/:gameId/lobby`}>
+            <GameLobbyRoute />
+          </Route>
           <Route path={`${match.path}/games-list`}>
             <GamesListRoute />
-          </Route>
-          <Route path={`${match.path}/game-lobby`}>
-            <GameLobbyRoute />
           </Route>
         </Switch>
       </div>
