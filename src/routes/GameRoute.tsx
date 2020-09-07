@@ -6,7 +6,7 @@ import Game from '../components/game/Game';
 function GameRoute() {
     return (
         <>
-            <Header pageName="The Game" />
+            <Header pageName="" />
             <Game />
         </>
     )

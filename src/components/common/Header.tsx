@@ -36,6 +36,10 @@ function Header(props: Props) {
         dispatch(clearSubscriptions())
     }
 
+    const pageName = props.pageName !== ""
+        ? <span>{props.pageName}</span>
+        : []
+
     return (
         <div>
             <Link to='/' onClick={clickClearSubscriptions}>
@@ -46,7 +50,7 @@ function Header(props: Props) {
                     />
             </Link>
             {connectionStatus}
-            <p>{props.pageName}</p>
+            {pageName}
         </div>
     )
 }
