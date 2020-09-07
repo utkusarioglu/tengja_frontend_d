@@ -1,5 +1,6 @@
 export interface IGamesList {
-    items: IGameListing[]
+    items: IGameListing[];
+    time: number;
 }
 
 export interface IGameListing extends IGameListingCreate {
@@ -7,7 +8,7 @@ export interface IGameListing extends IGameListingCreate {
 
 export interface IGameListingCreate extends IGameListingUserFill {
     creationDate: string;
-    id: string;
+    gameId: string;
 }
 
 export interface IGameListingUserFill {

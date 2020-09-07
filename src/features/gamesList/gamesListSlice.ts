@@ -5,6 +5,7 @@ import { RootState } from '../../app/store';
 
 const initialState: IGamesList = {
     items: [],
+    time: 0,
 }
 
 const gameListSlice = createSlice({
