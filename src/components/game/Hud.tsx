@@ -26,9 +26,7 @@ const styles: {[className: string]: CSSProperties } = {
 function Hud() {
     const gameOver = useSelector(selectGameOver);
     const playerSymbols = useSelector(selectPlayerSymbols);
-    console.log('playerss', playerSymbols)
     const currentPlayerId = useSelector(selectCurrentPlayerId);
-    console.log('current player id', currentPlayerId)
     const activePlayerSymbol = !gameOver 
         ? playerSymbols[currentPlayerId] 
         : " ";

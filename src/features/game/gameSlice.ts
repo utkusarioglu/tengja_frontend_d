@@ -60,13 +60,11 @@ const gameSlice = createSlice({
                 const lastMove = getMove(state.moves, 'last');
                 const moveSpecs = action.payload;
                 const { playerId } = state.current;
-// console.log('playerId', playerId);
                 const updatedBoardLayout = updateBoardLayout(
                     lastMove, 
                     moveSpecs, 
                     playerId,
                 );
-                console.log('updated board', updatedBoardLayout)
                 const { winnerId, gameOver } = evaluateBoard(
                     updatedBoardLayout, state.rules,);
                 state.winnerId = winnerId
