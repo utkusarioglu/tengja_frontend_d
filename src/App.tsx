@@ -8,6 +8,7 @@ import {
 import WelcomeRoute from './routes/WelcomeRoute';
 import PlayRoute from './routes/PlayRoute';
 import WatchRoute from './routes/WatchRoute';
+import GameRoute from './routes/GameRoute';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/watch">
           <WatchRoute />
+        </Route>
+        <Route path="/game">
+          <GameRoute />
         </Route>
         <Route path="/">
           <WelcomeRoute />

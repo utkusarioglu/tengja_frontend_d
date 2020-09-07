@@ -26,7 +26,7 @@ export interface IMove {
 
 export interface IMoveSpecs extends IPosition{
     time: number;
-    duration: number;
+    // duration: number;
 }
 
 export interface IPosition {
@@ -43,7 +43,9 @@ export interface IGame {
         active: PlayerId[];
         initial: PlayerId[];
     };
-    spectators: any;
+    // !TODO
+    playerSymbols: {[playerId: number]: string}
+    spectators: PlayerId[];
     moves: IMove[];
     rules: IGameRules;
     current: {

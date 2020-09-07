@@ -11,10 +11,15 @@ export function getMove(moves: IMove[], moveId: string): IMove {
     }
 }
 
-export function updateBoardLayout(lastMove: IMove, position: IPosition, playerId: PlayerId) {
+export function updateBoardLayout(
+    lastMove: IMove, 
+    position: IPosition, 
+    playerId: PlayerId
+) {
     const lastBoardLayout = lastMove.boardLayout;
+    // console.log('last board layout', lastBoardLayout)
     const { row, col } = position;
-    lastBoardLayout[row][col] = lastMove.playerId;
+    lastBoardLayout[row][col] = playerId;
     return lastBoardLayout;
 }
 
@@ -34,7 +39,12 @@ export function updateMoves(moves: IMove[], playerId: PlayerId, moveSpecs: IMove
 }
 
 export function getNextPlayer(playerId: PlayerId, activePlayers: PlayerId[]): PlayerId {
-    return (playerId % activePlayers.length) + 1;
+    const currentId = activePlayers.indexOf(playerId);
+    if (activePlayers.length - 1 <= currentId) {
+        return activePlayers[0]
+    } else {
+        return activePlayers[currentId + 1];
+    }
 }
 
 export function evaluateBoard(

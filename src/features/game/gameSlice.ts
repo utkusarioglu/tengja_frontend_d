@@ -1,15 +1,36 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { IGame, IMove} from './game.types';
+import { IGame, IMoveSpecs} from './game.types';
 import { evaluateBoard, getMove, updateBoardLayout, updateMoves, getNextPlayer } from './gameLogic';
 
 const initialState: IGame = {
     players: {
-        active: [],
-        initial: []
+        active: [1, 2],
+        initial: [1, 2]
+    },
+    playerSymbols: {
+        0: '-',
+        1: 'X',
+        2: 'O',
     },
     spectators: [],
-    moves: [],
+    moves: [
+        {
+            playerId: 0,
+            playerAbandon: false,
+            boardLayout: Array.from({length: 3}, (_, k) => 
+                Array.from({length: 3}, (_, __) => 0)
+            ),
+            gameOver: false,
+            tilePop: false,
+            moveSpecs: {
+                row: 0,
+                col: 0,
+                time: 0,
+            },
+            highlightLayout: []
+        }
+    ],
     rules: {
         /* initial rules define a tictactoe 
         game with 60 second time limit */
@@ -34,16 +55,18 @@ const gameSlice = createSlice({
     initialState,
     reducers: {
         addMove: (state, action: 
-            PayloadAction<IMove>
+            PayloadAction<IMoveSpecs>
             ) => {
                 const lastMove = getMove(state.moves, 'last');
-                const { moveSpecs } = action.payload;
+                const moveSpecs = action.payload;
                 const { playerId } = state.current;
+// console.log('playerId', playerId);
                 const updatedBoardLayout = updateBoardLayout(
                     lastMove, 
                     moveSpecs, 
                     playerId,
                 );
+                console.log('updated board', updatedBoardLayout)
                 const { winnerId, gameOver } = evaluateBoard(
                     updatedBoardLayout, state.rules,);
                 state.winnerId = winnerId
@@ -57,18 +80,25 @@ const gameSlice = createSlice({
                     updatedBoardLayout
                 );
 
-                state.current.playerId = getNextPlayer(
+                const nextPlayer = getNextPlayer(
                     playerId, 
                     state.players.active
                 );
+                // console.log('next player', nextPlayer)
+                state.current.playerId = nextPlayer;
 
         },
     }
 });
 
-
-
-
+export const selectBoardLayout = (state: RootState) => getMove(state.game.moves, 'last').boardLayout;
+export const selectPlayerSymbols = (state: RootState) => state.game.playerSymbols;
 export const selectPlayers = (state: RootState) => state.game.players;
+export const selectWinnerId = (state: RootState) => state.game.winnerId;
+export const selectGameOver = (state: RootState) => state.game.gameOver;
+export const selectCurrentPlayerId = (state: RootState) => state.game.current.playerId;
+export const selectRoundNo = (state: RootState) => state.game.moves.length;
+
+export const { addMove } = gameSlice.actions;
 
 export default gameSlice.reducer;
