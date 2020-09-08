@@ -4,8 +4,10 @@ import { selectCurrentPlayerId, selectRoundNo, selectPlayerSymbols, selectGameOv
 
 const styles: {[className: string]: CSSProperties } = {
     hud: {
+        position: 'fixed',
+        bottom: 0,
         display: 'grid',
-        gridAutoFlow: 'row',
+        gridAutoFlow: 'column',
         width: '100px',
         background: '#eeeeee',
         gridArea: 'Stats',
