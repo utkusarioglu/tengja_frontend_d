@@ -3,6 +3,9 @@ import { RootState } from '../../app/store';
 import { IGame, IMoveSpecs} from './game.types';
 import { evaluateBoard, getMove, updateBoardLayout, updateMoves, getNextPlayer } from './gameLogic';
 
+const initialRowCount = 3;
+const initialColCount = 3;
+
 const initialState: IGame = {
     players: {
         active: [1, 2],
@@ -18,8 +21,8 @@ const initialState: IGame = {
         {
             playerId: 0,
             playerAbandon: false,
-            boardLayout: Array.from({length: 3}, (_, k) => 
-                Array.from({length: 3}, (_, __) => 0)
+            boardLayout: Array.from({length: initialRowCount}, (_, k) => 
+                Array.from({length: initialColCount}, (_, __) => 0)
             ),
             gameOver: false,
             tilePop: false,
@@ -37,8 +40,8 @@ const initialState: IGame = {
         timeLimit: 60,
         winMode: 'firstStreak',
         tilePop: false,
-        rowCount: 3,
-        colCount: 3,
+        rowCount: initialRowCount,
+        colCount: initialColCount,
         streakLength: 3,
         maxPlayerCount: 2,
     },
@@ -96,6 +99,7 @@ export const selectWinnerId = (state: RootState) => state.game.winnerId;
 export const selectGameOver = (state: RootState) => state.game.gameOver;
 export const selectCurrentPlayerId = (state: RootState) => state.game.current.playerId;
 export const selectRoundNo = (state: RootState) => state.game.moves.length;
+export const selectRules = (state: RootState) => state.game.rules;
 
 export const { addMove } = gameSlice.actions;
 
