@@ -14,11 +14,14 @@ type Props = OwnProps
 
 const styles: {[className: string]: CSSProperties} = {
     row: {
-        display: 'flex',
-        flexDirection: 'row',
+        display: 'grid',
+        gridAutoFlow: 'column',
     },
     board: {
         gridArea: 'Board',
+        display: 'grid',
+        width: '100vw',
+        height: 'max-content',
     }
 }
 

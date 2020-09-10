@@ -87,8 +87,10 @@ const gameSlice = createSlice({
                 );
                 // console.log('next player', nextPlayer)
                 state.current.playerId = nextPlayer;
-
         },
+        startNewGame: (state, action: PayloadAction<IGame>) => {
+            state = action.payload
+        }
     }
 });
 

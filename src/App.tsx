@@ -20,7 +20,7 @@ function App() {
         <Route path="/watch">
           <WatchRoute />
         </Route>
-        <Route path="/game">
+        <Route path="/game/:gameId?">
           <GameRoute />
         </Route>
         <Route path="/">
