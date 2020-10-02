@@ -6,7 +6,12 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { initiateWebsocketConnection } from './app/websocket';
-import { CssBaseline } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+/**
+ * Initiates the websocket connection for the app
+ */
+initiateWebsocketConnection();
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,10 +23,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-/**
- * Initiates the websocket connection for the app
- */
-initiateWebsocketConnection();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -24,10 +24,10 @@ export const WEBSOCKET_OPTIONS: IWebsocketOptions = {
   reconnectOnClose: true,
 }
 
+/**
+ * Websocket connection initiation
+ */
 export function initiateWebsocketConnection(): void {
-  /**
-   * Websocket connection initiation
-   */
   const WEBSOCKET_URL = `ws://${window.location.hostname}:4000/ws`
   store.dispatch(connect(WEBSOCKET_URL));
 }

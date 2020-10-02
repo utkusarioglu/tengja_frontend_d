@@ -3,7 +3,7 @@ import logo from '../../svg/logo.svg';
 import { Link } from 'react-router-dom';
 import { send } from '@giantmachines/redux-websocket';
 
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+// import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -26,19 +26,19 @@ const styles: {[className: string]: CSSProperties} = {
     }
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-  }),
-);
+// const useStyles = makeStyles((theme: Theme) =>
+//   createStyles({
+//     root: {
+//       flexGrow: 1,
+//     },
+//     menuButton: {
+//       marginRight: theme.spacing(2),
+//     },
+//     title: {
+//       flexGrow: 1,
+//     },
+//   }),
+// );
 
 interface OwnProps {
     pageName: string;
@@ -47,17 +47,9 @@ interface OwnProps {
 type Props = OwnProps;
 
 function Header(props: Props) {
-    const classes = useStyles();
+    // const classes = useStyles();
     const dispatch = useDispatch();
-    const connectionStatus = <span style={styles.connectionStatus}
-        >{useSelector(selectIsConnected) ? ':)' : ':('}</span>;
-
-    const clickClearSubscriptions = () => {
-        dispatch(send({
-            unsubscribe: true,
-        }));
-        dispatch(clearSubscriptions())
-    }
+    const connectionStatus = useSelector(selectIsConnected) ? ':)' : ':(';
 
     const pageName = props.pageName !== ""
         ? (
@@ -65,26 +57,12 @@ function Header(props: Props) {
                 <Typography>{props.pageName}</Typography>
             </Toolbar>
         )
-        : []
-
-    // return (
-    //     <div>
-    //         <Link to='/' onClick={clickClearSubscriptions}>
-    //             <img
-    //                 src={logo}
-    //                 style={styles.logo}
-    //                 alt="website logo"
-    //                 />
-    //         </Link>
-    //         {connectionStatus}
-    //         {pageName}
-    //     </div>
-    // )
+        : [];
 
     return (
         <AppBar position="fixed">
             <Toolbar>
-                <Link to='/' onClick={clickClearSubscriptions}>
+                <Link to='/' onClick={() => clickClearSubscriptions(dispatch)}>
                     <img
                         src={logo}
                         style={styles.logo}
@@ -96,6 +74,13 @@ function Header(props: Props) {
             {pageName}
         </AppBar>
     )
+}
+
+function clickClearSubscriptions(dispatch: any) {
+    dispatch(send({
+        unsubscribe: true,
+    }));
+    dispatch(clearSubscriptions())
 }
 
 export default Header;
