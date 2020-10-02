@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { env } from 'process';
 
 interface App {
     isConnected: boolean;
@@ -32,19 +31,19 @@ const appSlice = createSlice({
     extraReducers: {
         'REDUX_WEBSOCKET::OPEN': (state, action: PayloadAction<any>) => {
             state.isConnected = true;
-            env.NODE_ENV === 'development' &&
+            process.env.NODE_ENV === 'development' &&
                 console.log('Websocket OPEN')
             // console.log("connect state: \n", state, action);
         },
         'REDUX_WEBSOCKET::CLOSED': (state, action: PayloadAction<any>) => {
             state.isConnected = false;
-            env.NODE_ENV === 'development' && 
+            process.env.NODE_ENV === 'development' && 
                 console.log('Websocket closed, trying to OPEN')
             // store.dispatch(connect(WEBSOCKET_URL));
         },
-        // 'REDUX_WEBSOCKET::MESSAGE': (state, action: PayloadAction<any>) => {
-        //     console.log("app responding to websocket", state, action);
-        // }
+        'REDUX_WEBSOCKET::MESSAGE': (_, action: PayloadAction<any>) => {
+            console.log("ws.message", JSON.parse(action.payload.message));
+        }
     }
 })
 
