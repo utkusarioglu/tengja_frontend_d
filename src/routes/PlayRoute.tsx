@@ -10,50 +10,51 @@ import {
 
 // import Header from '../components/Header';
 
-import PlayerCreateRoute from './PlayerCreateRoute';
-import GamesListRoute from './GamesListRoute';
-import GameLobbyRoute from './GameLobbyRoute';
+import PlayerCreateRoute from "./PlayerCreateRoute";
+import GamesListRoute from "./GamesListRoute";
+import GameLobbyRoute from "./GameLobbyRoute";
 
 function PlayRoute() {
-    const match = useRouteMatch();
-    const playerProfile = {
-      name: "John Doe",
-      motto: "I win",
-      symbol: "X",
-      color: "#FF0000",
-    }
-    // const playerProfile = false;
+  const match = useRouteMatch();
+  const playerProfile = {
+    name: "John Doe",
+    motto: "I win",
+    symbol: "X",
+    color: "#FF0000",
+  };
+  // const playerProfile = false;
 
-    return (
-      <div>
-        {(playerProfile) 
-          ? <Redirect
-              to={{
-                pathname: `${match.path}/games-list`,
-                // state: { from: location }
-              }}
-            />
-          : <Redirect
-              to={{
-                pathname: `${match.path}/player-create`,
-                // state: { from: location }
-              }}
-            />
-        }
-  
-        <Switch>
-          <Route path={`${match.path}/player-create`}>
-            <PlayerCreateRoute />
-          </Route>
-          <Route path={`${match.path}/games-list/:gameId/lobby`}>
-            <GameLobbyRoute />
-          </Route>
-          <Route path={`${match.path}/games-list`}>
-            <GamesListRoute />
-          </Route>
-        </Switch>
-      </div>
-    );
-  }
+  return (
+    <div>
+      {playerProfile ? (
+        <Redirect
+          to={{
+            pathname: `${match.path}/games-list`,
+            // state: { from: location }
+          }}
+        />
+      ) : (
+        <Redirect
+          to={{
+            pathname: `${match.path}/player-create`,
+            // state: { from: location }
+          }}
+        />
+      )}
 
-  export default PlayRoute;
+      <Switch>
+        <Route path={`${match.path}/player-create`}>
+          <PlayerCreateRoute />
+        </Route>
+        <Route path={`${match.path}/games-list/:gameId/lobby`}>
+          <GameLobbyRoute />
+        </Route>
+        <Route path={`${match.path}/games-list`}>
+          <GamesListRoute />
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+
+export default PlayRoute;

@@ -1,14 +1,10 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import WelcomeRoute from './routes/WelcomeRoute';
-import PlayRoute from './routes/PlayRoute';
-import WatchRoute from './routes/WatchRoute';
-import GameRoute from './routes/GameRoute';
+import WelcomeRoute from "./routes/WelcomeRoute";
+import PlayRoute from "./routes/PlayRoute";
+import WatchRoute from "./routes/WatchRoute";
+import GameRoute from "./routes/GameRoute";
 
 function App() {
   return (
