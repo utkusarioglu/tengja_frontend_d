@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { send } from '@giantmachines/redux-websocket';
 import { addMove, selectPlayerSymbols, selectWinnerId } from '../../features/game/gameSlice';
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
@@ -121,12 +122,18 @@ function Tile(props: Props) {
 
     const playerOnClick = () => {
         if(mark === playerSymbols[0] && winner === 0) {
-            dispatch(addMove({
-                // player: 1,
+            const move = {
                 row: row,
                 col: col,
-                time: 0 // !TODO
-            }));
+                time: 0 // !TODO              
+            }
+            dispatch(addMove(move));
+            dispatch(send({
+              addMove: {
+                ...move,
+                game: '1234',
+              }
+            }))
         }
     }
 

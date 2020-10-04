@@ -28,6 +28,7 @@ export const WEBSOCKET_OPTIONS: IWebsocketOptions = {
  * Websocket connection initiation
  */
 export function initiateWebsocketConnection(): void {
-  const WEBSOCKET_URL = `ws://${window.location.hostname}:4000/ws`
+  const PORT = 4000;
+  const WEBSOCKET_URL = `ws://${window.location.hostname}:${PORT}/ws`
   store.dispatch(connect(WEBSOCKET_URL));
 }
